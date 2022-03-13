@@ -18,6 +18,23 @@ If you're unfamiliar with Fish, please check out the
 (Fish for bash users)[https://fishshell.com/docs/current/fish_for_bash_users.html#fish-for-bash-users]
 to get started!
 
+# Building
+
+I have Sailfish SDK 3.8.3 Docker variant installed at the moment. Building the
+application should go something like this:
+
+```bash
+$ git clone https://github.com/direc85/fish.git
+$ cd fish
+$ git submodule init
+$ git submodule update
+$ sfdk config --push target SailfishOS-4.3.0.12-aarch64 && sfdk build
+```
+
+The build is set up so that it keeps the build files in separate
+`build-$(ARCH)` folders so that the subsequent builds should be
+lightning fast, even if you switch the target architecture back and forth.
+
 Improvements in the packaging are very welcome!
 
 Happy hacking!
