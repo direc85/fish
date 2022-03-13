@@ -5,6 +5,7 @@ of the application (without gettext translations, documentation and
 translations) to Sailfish OS.
 
 > :warning: **Install at your own risk!** :warning:
+
 > :warning: **Do NOT set fish as default shell!** :warning:
 
 You'll need `fingerterm`, `toeterm` et. al. to use this. If you have developer
