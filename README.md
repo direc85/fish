@@ -2,7 +2,8 @@
 
 Fish is a user-fiendly, interactive shell. This project provides the packaging
 of the application (without gettext translations, documentation and
-translations) to Sailfish OS.
+translations) to Sailfish OS. You can download the binaries from
+[OpenRepos.net](https://openrepos.net/content/direc85/fish).
 
 > :warning: **Install at your own risk!** :warning:
 
@@ -16,7 +17,7 @@ desktop file for completeness sake, but they don't really serve any purpose.
 
 If you're unfamiliar with Fish, please check out the
 [Introduction](https://fishshell.com/docs/current/tutorial.html#tutorial) or
-(Fish for bash users)[https://fishshell.com/docs/current/fish_for_bash_users.html#fish-for-bash-users]
+[Fish for bash users](https://fishshell.com/docs/current/fish_for_bash_users.html#fish-for-bash-users)
 to get started!
 
 # Building
