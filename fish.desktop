@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Fish
+Icon=fish
+Exec=fish
+Terminal=true
+NoDisplay=true
