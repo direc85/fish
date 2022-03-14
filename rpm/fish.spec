@@ -1,15 +1,17 @@
 Name:           fish
 Summary:        Smart and user-friendly command line shell
 Version:        3.4.0
-Release:        1
+Release:        2
 Group:          Applications/System
 License:        GPLv2
 URL:            https://github.com/direc85/fish
 Source0:        %{name}-%{version}.tar.bz2
-Requires:       ncurses
-BuildRequires:  ncurses-devel
+Requires:       bc
+Requires:       ncurses-libs
+Requires:       python3dist(curses)
 BuildRequires:  gettext
-BuildRequires:  make >= 3.11
+BuildRequires:  ncurses-devel
+BuildRequires:  python3-devel
 
 %description
 Fish is a fully-equipped command line shell (like bash or zsh) that is smart and user-friendly. Fish supports powerful features like syntax highlighting, autosuggestions, and tab completions that just work, with nothing to learn or configure. If you want to make your command line more productive, more useful, and more fun, without learning a bunch of arcane syntax and configuration options, then fish might be just what you’re looking for!
@@ -17,14 +19,14 @@ Fish is a fully-equipped command line shell (like bash or zsh) that is smart and
 # This description section includes the metadata for SailfishOS:Chum, see
 # https://github.com/sailfishos-chum/main/blob/main/Metadata.md
 %if "%{?vendor}" == "chum"
-PackageName: fish shell
+PackageName: fish
 Type: console-application
 Categories:
   - System
   - Utility
 Custom:
   Repo: https://github.com/direc85/fish
-# Icon: https://raw.githubusercontent.com/sailfishos-chum/sailfishos-chum-gui/main/icons/sailfishos-chum-gui.svg
+Icon: https://github.com/direc85/fish/raw/master/images/fish.png
 %endif
 
 %prep
@@ -40,7 +42,7 @@ cmake \
   -DCMAKE_INSTALL_SYSCONFDIR=/etc \
   -Wno-dev
 cd build-%{getenv:DEB_BUILD_ARCH}
-%make_build
+%make_build fish_tests
 
 %install
 cd build-%{getenv:DEB_BUILD_ARCH}
@@ -65,6 +67,10 @@ cp icons/108x108/%{name}.png %{buildroot}%{_datadir}/icons/hicolor/108x108/apps/
 cp icons/128x128/%{name}.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/
 cp icons/172x172/%{name}.png %{buildroot}%{_datadir}/icons/hicolor/172x172/apps/
 cp %{name}.desktop %{buildroot}%{_datadir}/applications/
+
+# %check
+cd build-%{getenv:DEB_BUILD_ARCH}
+./fish_tests
 
 %postun
 
