@@ -3,3 +3,4 @@ build-*/
 RPMS/
 documentation.list
 *.rpm
+rpm/fish.spec
