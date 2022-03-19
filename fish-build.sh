@@ -3,7 +3,7 @@ set -e
 FISH_NAME=fish-3.4.0-4
 
 compile() {
-  sfdk config --push target SailfishOS-${SFOS_VER}-${SFOS_ARCH} && sfdk config --push snapshot fish && sfdk build
+  sfdk -c target=SailfishOS-${SFOS_VER}-${SFOS_ARCH} build
   mv RPMS/${FISH_NAME}.${SFOS_ARCH}.rpm ./${FISH_NAME}_${PKG_VAR}.${SFOS_ARCH}.rpm
 }
 
