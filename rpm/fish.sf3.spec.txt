@@ -1,7 +1,7 @@
 Name:           fish
 Summary:        Smart and user-friendly command line shell
 Version:        3.4.0
-Release:        3
+Release:        4
 Group:          Applications/System
 License:        GPLv2
 URL:            https://github.com/direc85/fish
