@@ -34,18 +34,19 @@ Icon: https://github.com/direc85/fish/raw/master/images/fish.png
 
 %build
 cd %{name}
-make clean
 cmake \
   -DBUILD_DOCS=OFF \
   -DWITH_GETTEXT=OFF \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DCMAKE_INSTALL_SYSCONFDIR=/etc \
   -Wno-dev
-%make_build all fish_tests
+%make_build fish_key_reader
+%make_build fish_indent
+%make_build fish
 
 %install
 cd %{name}
-%make_install
+%make_install fish fish_indent fish_key_reader
 rm -rf %{buildroot}%{_datadir}/doc
 rm -rf %{buildroot}%{_datadir}/man
 rm -rf %{buildroot}%{_datadir}/pixmaps
@@ -67,7 +68,7 @@ cp icons/128x128/%{name}.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/
 cp icons/172x172/%{name}.png %{buildroot}%{_datadir}/icons/hicolor/172x172/apps/
 cp %{name}.desktop %{buildroot}%{_datadir}/applications/
 
-# %check
+%check
 cd %{name}
 ./fish_tests
 
