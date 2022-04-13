@@ -7,9 +7,11 @@ CORES=$(expr $(nproc) - 2 )
 git_reset() {
   cd fish
   git checkout ${FISH_VER}
+  git reset --hard
   echo "Removed $(git clean -f -d | wc -l) file(s) and/or folder(s)"
-  git cherry-pick 5994e44877e043a83faf7f4ddfea7cee338e3f13 --no-commit
   echo -n "${FISH_VER}" > version
+  # Until PR #8811 and #8872 are released
+  git am < ../0001-Fix-launching-fish_config-on-SailfishOS.patch
   cd ..
 }
 
