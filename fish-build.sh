@@ -1,9 +1,17 @@
 #!/bin/sh
 set -e
-FISH_NAME=fish-3.4.1-1
+FISH_VER=3.4.1
+RPM_NAME=fish-${FISH_VER}-1
 CORES=$(expr $(nproc) - 2 )
 
-echo -n "${FISH_NAME}" > fish/version
+git_reset() {
+  cd fish
+  git checkout ${FISH_VER}
+  echo "Removed $(git clean -f -d | wc -l) file(s) and/or folder(s)"
+  git cherry-pick 5994e44877e043a83faf7f4ddfea7cee338e3f13 --no-commit
+  echo -n "${FISH_VER}" > version
+  cd ..
+}
 
 compile() {
   if [[ -f ${RPM_NAME}_${PKG_VAR}.${SFOS_ARCH}.rpm ]]
