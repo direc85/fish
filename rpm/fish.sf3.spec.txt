@@ -1,12 +1,11 @@
 Name:           fish
 Summary:        Smart and user-friendly command line shell
-Version:        3.4.0
-Release:        4
+Version:        3.4.1
+Release:        1
 Group:          Applications/System
 License:        GPLv2
 URL:            https://github.com/direc85/fish
 Source0:        %{name}-%{version}.tar.bz2
-Requires:       sailfish-version < 4.0.0
 Requires:       bc
 Requires:       python3-curses
 BuildRequires:  gettext
