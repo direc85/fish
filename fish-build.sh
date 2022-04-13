@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-FISH_NAME=fish-3.4.0-4
+FISH_NAME=fish-3.4.1-1
 
 compile() {
   sfdk -c target=SailfishOS-${SFOS_VER}-${SFOS_ARCH} build
