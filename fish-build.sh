@@ -23,9 +23,12 @@ compile() {
   fi
 }
 
-# Sailfish >= 4
-SFOS_VER=4.3.0.12
-PKG_VAR=sf4
+
+
+# Sailfish >= 4.4
+SFOS_VER=4.4.0.58
+PKG_VAR=sf440
+git_reset
 
 rm -f rpm/fish.spec
 ln -s fish.sf4.spec.txt rpm/fish.spec
@@ -37,14 +40,31 @@ compile
 SFOS_ARCH=i486
 compile
 
+# Sailfish <= 4.3
+SFOS_VER=4.3.0.12
+PKG_VAR=sf430
+git_reset
+
+SFOS_ARCH=aarch64
+compile
+SFOS_ARCH=armv7hl
+compile
+SFOS_ARCH=i486
+compile
+
 # Sailfish < 4
 SFOS_VER=3.4.0.24
-PKG_VAR=sf3
+PKG_VAR=sf340
 
 rm -f rpm/fish.spec
 ln -s fish.sf3.spec.txt rpm/fish.spec
 
+SFOS_ARCH=aarch64
+git_reset
+compile
 SFOS_ARCH=armv7hl
+git_reset
 compile
 SFOS_ARCH=i486
+git_reset
 compile
