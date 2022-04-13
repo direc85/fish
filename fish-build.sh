@@ -70,3 +70,7 @@ compile
 SFOS_ARCH=i486
 git_reset
 compile
+
+echo -e "\nProduced RPM files:\n"
+ls -1 ${RPM_NAME}*.rpm
+
