@@ -6,8 +6,13 @@ CORES=$(expr $(nproc) - 2 )
 echo -n "${FISH_NAME}" > fish/version
 
 compile() {
-  sfdk -c target=SailfishOS-${SFOS_VER}-${SFOS_ARCH} build --no-check -j ${CORES}
-  mv RPMS/${FISH_NAME}.${SFOS_ARCH}.rpm ./${FISH_NAME}_${PKG_VAR}.${SFOS_ARCH}.rpm
+  if [[ -f ${RPM_NAME}_${PKG_VAR}.${SFOS_ARCH}.rpm ]]
+  then
+    echo "${RPM_NAME}_${PKG_VAR}.${SFOS_ARCH}.rpm exists, skipping..."
+  else
+    sfdk -c target=SailfishOS-${SFOS_VER}-${SFOS_ARCH} build --no-check -j ${CORES} -- --define "pkg_var ${PKG_VAR}"
+    mv RPMS/${RPM_NAME}.${SFOS_ARCH}.rpm ./${RPM_NAME}_${PKG_VAR}.${SFOS_ARCH}.rpm
+  fi
 }
 
 # Sailfish >= 4
