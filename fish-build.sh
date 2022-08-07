@@ -10,8 +10,6 @@ git_reset() {
   git reset --hard
   echo "Removed $(git clean -f -d | wc -l) file(s) and/or folder(s)"
   echo -n "${FISH_VER}" > version
-  # Until PR #8811 and #8872 are released
-  git am < ../0001-Fix-launching-fish_config-on-SailfishOS.patch
   cd ..
 }
 
