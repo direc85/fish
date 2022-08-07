@@ -1,6 +1,6 @@
 Name:           fish
 Summary:        Smart and user-friendly command line shell
-Version:        3.4.1
+Version:        x.y.z
 Release:        1
 Group:          Applications/System
 License:        GPLv2

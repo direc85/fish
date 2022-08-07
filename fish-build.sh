@@ -33,7 +33,8 @@ PKG_VAR=sf440
 git_reset
 
 rm -f rpm/fish.spec
-ln -s fish.sf4.spec.txt rpm/fish.spec
+cp rpm/fish.sf4.spec.txt rpm/fish.spec
+sed -i "s/^Version:        .*/Version:        $FISH_VER/" rpm/fish.spec
 
 SFOS_ARCH=armv7hl
 compile
@@ -59,7 +60,8 @@ SFOS_VER=3.4.0.24
 PKG_VAR=sf340
 
 rm -f rpm/fish.spec
-ln -s fish.sf3.spec.txt rpm/fish.spec
+cp rpm/fish.sf3.spec.txt rpm/fish.spec
+sed -i "s/^Version:        .*/Version:        $FISH_VER/" rpm/fish.spec
 
 SFOS_ARCH=aarch64
 git_reset
@@ -74,3 +76,4 @@ compile
 echo -e "\nProduced RPM files:\n"
 ls -1 ${RPM_NAME}*.rpm
 
+rm -f rpm/fish.spec
