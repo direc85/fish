@@ -13,6 +13,15 @@ git_reset() {
   cd ..
 }
 
+compile_all() {
+  SFOS_ARCH=armv7hl
+  compile
+  SFOS_ARCH=aarch64
+  compile
+  SFOS_ARCH=i486
+  compile
+}
+
 compile() {
   if [[ -f ${RPM_NAME}_${PKG_VAR}.${SFOS_ARCH}.rpm ]]
   then
@@ -34,24 +43,14 @@ rm -f rpm/fish.spec
 cp rpm/fish.sf4.spec.txt rpm/fish.spec
 sed -i "s/^Version:        .*/Version:        $FISH_VER/" rpm/fish.spec
 
-SFOS_ARCH=armv7hl
-compile
-SFOS_ARCH=aarch64
-compile
-SFOS_ARCH=i486
-compile
+compile_all
 
 # Sailfish <= 4.3
 SFOS_VER=4.3.0.12
 PKG_VAR=sf430
 git_reset
 
-SFOS_ARCH=aarch64
-compile
-SFOS_ARCH=armv7hl
-compile
-SFOS_ARCH=i486
-compile
+compile_all
 
 # Sailfish < 4
 SFOS_VER=3.4.0.24
