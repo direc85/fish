@@ -11,6 +11,7 @@ Requires:       python3-curses
 BuildRequires:  gettext
 BuildRequires:  ncurses-devel
 BuildRequires:  python3-devel
+BuildRequires:  git
 
 %description
 Fish is a fully-equipped command line shell (like bash or zsh) that is smart and user-friendly. Fish supports powerful features like syntax highlighting, autosuggestions, and tab completions that just work, with nothing to learn or configure. If you want to make your command line more productive, more useful, and more fun, without learning a bunch of arcane syntax and configuration options, then fish might be just what you’re looking for!
