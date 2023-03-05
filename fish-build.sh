@@ -32,16 +32,21 @@ compile() {
   fi
 }
 
-
-
-# Sailfish >= 4.4
-SFOS_VER=4.4.0.58
-PKG_VAR=sf440
+# Sailfish >= 4.5
+SFOS_VER=4.5.0.18
+PKG_VAR=sf450
 git_reset
 
 rm -f rpm/fish.spec
 cp rpm/fish.sf4.spec.txt rpm/fish.spec
 sed -i "s/^Version:        .*/Version:        $FISH_VER/" rpm/fish.spec
+
+compile_all
+
+# Sailfish 4.4
+SFOS_VER=4.4.0.58
+PKG_VAR=sf440
+git_reset
 
 compile_all
 
