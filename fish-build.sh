@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-FISH_VER=3.6.0
+FISH_VER=3.6.1
 RPM_NAME=fish-${FISH_VER}-1
 CORES=$(expr $(nproc) - 2 )
 
