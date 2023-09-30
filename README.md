@@ -9,7 +9,7 @@ translations) to Sailfish OS. You can download the binaries from
 
 > :warning: **Do NOT set fish as default shell!** :warning:
 
-You'll need `fingerterm`, `toeterm` et. al. to use this. If you have developer
+You'll need `fingerterm`, `toeterm` et. al. to use this on-device. If you have developer
 mode enabled, you can also SSH into the device and start it after login.
 
 The packaging is wonky, but seems to work. I included the icons and a hidden
@@ -22,7 +22,7 @@ to get started!
 
 # Building
 
-I have Sailfish SDK 3.8.3 Docker variant installed at the moment. Building the
+I have Sailfish SDK 3.10.4 Docker variant installed at the moment. Building the
 application should go something like this, depending on your Sailfish version:
 
 ```bash
@@ -32,7 +32,7 @@ $ git submodule init
 $ git submodule update
 $ rm -f rpm/fish.spec
 $ ln -s fish.sf4.spec.txt rpm/fish.spec
-$ sfdk config --push target SailfishOS-4.3.0.12-aarch64 && sfdk build
+$ sfdk -c target=SailfishOS-4.5.0.18-aarch64 build
 ```
 
 The build is set up so that it keeps the build files in separate
@@ -40,8 +40,10 @@ The build is set up so that it keeps the build files in separate
 should be lightning fast, even if you switch the target architecture back and forth.
 The Sailfish OS 3 build however seems to use older cmake, which seems to always
 build the sources into the same folder, so it always does a failsafe `make clean`
-before even trying to compile it. I included the build script I used to generate
-3.4.0-3 builds so you can use that, too.
+before even trying to compile it.
+
+The build script that builds all architectures for all four build targets
+is included, that's what I build the twelve (12) RPMs with.
 
 Improvements in the packaging are very, _very_ welcome!
 
