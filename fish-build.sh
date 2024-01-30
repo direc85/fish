@@ -1,8 +1,14 @@
 #!/bin/sh
 set -e
-FISH_VER=3.6.1
-RPM_NAME=fish-${FISH_VER}-1
 CORES=$(expr $(nproc) - 2 )
+
+fish_version() {
+  cd fish
+  FISH_VER=$(git describe)
+  FISH_VER=$(echo ${FISH_VER%%-*})
+  RPM_NAME=fish-${FISH_VER}-1
+  cd ..
+}
 
 git_reset() {
   cd fish
@@ -31,6 +37,9 @@ compile() {
     mv RPMS/${RPM_NAME}.${SFOS_ARCH}.rpm ./${RPM_NAME}_${PKG_VAR}.${SFOS_ARCH}.rpm
   fi
 }
+
+fish_version
+echo "Compiling $FISH_VER..."
 
 # Sailfish >= 4.5
 SFOS_VER=4.5.0.18
