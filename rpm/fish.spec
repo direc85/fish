@@ -71,19 +71,6 @@ This package contains development files for the fish shell.
 # %%make_build test
 # popd
 
-%post
-# Add fish to the list of allowed shells in /etc/shells
-if ! grep -q '^%{_bindir}/%{name}$' %{_sysconfdir}/shells; then
-        echo %{_bindir}/%{name} >>%{_sysconfdir}/shells
-fi
-
-%postun
-# Remove fish from the list of allowed shells in /etc/shells
-if [ "$1" = 0 ]; then
-        grep -v '^%{_bindir}/%{name}$' %{_sysconfdir}/shells >%{_sysconfdir}/%{name}.tmp
-        mv %{_sysconfdir}/%{name}.tmp %{_sysconfdir}/shells
-fi
-
 %files -f %{name}.lang
 %dir %{_sysconfdir}/fish
 %config(noreplace) %{_sysconfdir}/%{name}/*
