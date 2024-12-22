@@ -1,6 +1,6 @@
-src/
-build-*/
+BUID/
+BUILDROOT/
 RPMS/
+SRPMS/
+installroot/
 documentation.list
-*.rpm
-rpm/fish.spec
