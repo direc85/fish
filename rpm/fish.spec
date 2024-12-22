@@ -18,7 +18,8 @@ Version:        3.7.1
 Release:        1
 Summary:        The "friendly interactive shell"
 # see bundled doc_src/license.rst
-License:        BSD-3-Clause AND GPLv2 AND ISC AND LGPLv2+ AND MIT AND PSF-2.0
+# Python is a legacy alias for PSF-2.0
+License:        BSD-3-Clause AND GPLv2 AND ISC AND LGPLv2+ AND MIT AND Python
 Group:          System/Shells
 URL:            https://github.com/direc85/fish
 Source:         %{name}-%{version}.tar.xz
