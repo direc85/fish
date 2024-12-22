@@ -85,3 +85,8 @@ find %{buildroot} -name "CHANGELOG.rst" -print -delete || :
 
 %files devel
 %{_datadir}/pkgconfig/fish.pc
+
+%changelog
+
+* Sun Dec 12 2024 Matti Viljanen <matti.viljanen@kapsi.fi> - 3.7.1-1
+- Initial Chum release
