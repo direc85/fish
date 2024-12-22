@@ -18,7 +18,7 @@ Version:        3.7.1
 Release:        1
 Summary:        The "friendly interactive shell"
 # see bundled doc_src/license.rst
-License:        BSD-3-Clause AND GPL-2.0-only AND ISC AND LGPL-2.0-or-later AND MIT AND PSF-2.0
+License:        BSD-3-Clause AND GPLv2 AND ISC AND LGPLv2+ AND MIT AND PSF-2.0
 Group:          System/Shells
 URL:            https://fishshell.com/
 Source:         %{name}-%{version}.tar.xz
