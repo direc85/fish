@@ -14,7 +14,7 @@
 
 
 Name:           fish
-Version:        3.7.0
+Version:        3.7.1
 Release:        1
 Summary:        The "friendly interactive shell"
 # see bundled doc_src/license.rst
