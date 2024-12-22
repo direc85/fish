@@ -12,21 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
-#
-
 
 Name:           fish
 Version:        3.7.1
-Release:        0
+Release:        1
 Summary:        The "friendly interactive shell"
 # see bundled doc_src/license.rst
 License:        BSD-3-Clause AND GPL-2.0-only AND ISC AND LGPL-2.0-or-later AND MIT AND PSF-2.0
 Group:          System/Shells
 URL:            https://fishshell.com/
-Source:         https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.xz
-Source1:        https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.xz.asc
-Source100:      fish.keyring
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -34,8 +29,6 @@ BuildRequires:  gettext
 BuildRequires:  groff
 BuildRequires:  ncurses-devel
 BuildRequires:  pcre2-devel >= 10.21
-BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 # for tests
 BuildRequires:  procps
 Requires:       awk
@@ -58,7 +51,7 @@ Group:          Development/Libraries/C and C++
 This package contains development files for the fish shell.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{version}/%{name}
 
 # fix E: env-script-interpreter
 find share/tools -type f -name *.py -exec \
@@ -119,6 +112,3 @@ fi
 
 %files devel
 %{_datadir}/pkgconfig/fish.pc
-
-%changelog
-
