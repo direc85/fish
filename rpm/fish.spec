@@ -93,7 +93,8 @@ echo "%{version}" > version
 
 %find_lang %{name}
 
-find %{buildroot} -name "CHANGELOG.rst" -print -delete || :
+rm -f %{buildroot}/%{_datadir}/doc/packages/fish/CHANGELOG.rst
+rm -f %{buildroot}/%{_datadir}/applications/fish.desktop
 
 # %%check
 # pushd build
@@ -107,7 +108,6 @@ find %{buildroot} -name "CHANGELOG.rst" -print -delete || :
 %{_bindir}/fish_indent
 %{_bindir}/fish_key_reader
 %{_datadir}/%{name}
-%{_datadir}/applications/fish.desktop
 %{_datadir}/pixmaps/fish.png
 
 %files devel
