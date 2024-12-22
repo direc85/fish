@@ -50,11 +50,6 @@ This package contains development files for the fish shell.
 %prep
 %autosetup -p1 -n %{name}-%{version}/%{name}
 
-# fix E: env-script-interpreter
-pwd
-find fish/share/tools -type f -name *.py -exec \
-    sed -i -r '1s|^#!%{_bindir}/env |#!%{_bindir}/|' {} +
-
 %build
 %cmake \
     -DCMAKE_BUILD_TYPE=Release \
