@@ -22,6 +22,7 @@ License:        BSD-3-Clause AND GPLv2 AND ISC AND LGPLv2+ AND MIT AND PSF-2.0
 Group:          System/Shells
 URL:            https://fishshell.com/
 Source:         %{name}-%{version}.tar.xz
+Patch0:         0001-Ensure-correct-hashbang-for-.py-files.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
