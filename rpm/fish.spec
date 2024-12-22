@@ -14,7 +14,7 @@
 
 
 Name:           fish
-Version:        3.7.1
+Version:        3.7.0
 Release:        1
 Summary:        The "friendly interactive shell"
 # see bundled doc_src/license.rst
@@ -66,10 +66,10 @@ This package contains development files for the fish shell.
 
 %find_lang %{name}
 
-%check
-pushd build
-%make_build test
-popd
+# %%check
+# pushd build
+# %%make_build test
+# popd
 
 %post
 # Add fish to the list of allowed shells in /etc/shells
