@@ -23,10 +23,8 @@ Group:          System/Shells
 URL:            https://fishshell.com/
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  cmake
-BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
-BuildRequires:  groff
 BuildRequires:  ncurses-devel
 BuildRequires:  pcre2-devel >= 10.21
 # for tests
@@ -34,7 +32,6 @@ BuildRequires:  procps
 Requires:       awk
 Requires:       bc
 Requires:       gzip
-Requires:       man
 Recommends:     terminfo
 
 %description
@@ -63,6 +60,8 @@ find share/tools -type f -name *.py -exec \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DCMAKE_INSTALL_SYSCONFDIR=%{_sysconfdir} \
     -DCMAKE_INSTALL_DOCDIR:PATH=share/doc/packages/fish \
+    -DBUILD_DOCS=OFF \
+    -DFISH_USE_SYSTEM_PCRE2=ON \
     %{nil}
 %cmake_build
 
@@ -104,9 +103,7 @@ fi
 %{_bindir}/fish
 %{_bindir}/fish_indent
 %{_bindir}/fish_key_reader
-%doc %{_datadir}/doc/packages/%{name}
 %{_datadir}/%{name}
-%{_mandir}/man1/*.1%{?ext_man}
 %{_datadir}/applications/fish.desktop
 %{_datadir}/pixmaps/fish.png
 
