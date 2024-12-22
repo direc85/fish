@@ -20,7 +20,7 @@ Summary:        The "friendly interactive shell"
 # see bundled doc_src/license.rst
 License:        BSD-3-Clause AND GPLv2 AND ISC AND LGPLv2+ AND MIT AND PSF-2.0
 Group:          System/Shells
-URL:            https://fishshell.com/
+URL:            https://github.com/direc85/fish
 Source:         %{name}-%{version}.tar.xz
 Patch0:         0001-Ensure-correct-hashbang-for-.py-files.patch
 BuildRequires:  cmake
@@ -40,6 +40,27 @@ fish is a command line shell.
 It is geared towards interactive use and its features are focused on user
 friendlieness and discoverability. The language syntax is simple but
 incompatible with other shell languages.
+
+# This description section includes metadata for SailfishOS:Chum, see
+# https://github.com/sailfishos-chum/main/blob/main/Metadata.md
+%if 0%{?_chum}
+Title: Fish shell
+Type: console-application
+DeveloperName: Matti Viljanen
+Categories:
+ - Development
+ - System
+ - Utility
+Custom:
+  Repo: https://github.com/fish-shell/fish-shell
+  PackagingRepo: https://github.com/direc85/fish
+PackageIcon: https://raw.githubusercontent.com/direc85/fish/master/icons/172x172/fish.png
+Links:
+  Homepage: https://github.com/direc85/fish
+  Help: https://fishshell.com/docs/current/index.html
+  Bugtracker: https://github.com/direc85/fish/issues
+  Donation: https://ko-fi.com/direc85
+%endif
 
 %package devel
 Summary:        Devel files for the fish shell
