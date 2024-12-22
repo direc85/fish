@@ -66,6 +66,8 @@ This package contains development files for the fish shell.
 
 %find_lang %{name}
 
+find %{buildroot} -name "CHANGELOG.rst" -print -delete || :
+
 # %%check
 # pushd build
 # %%make_build test
