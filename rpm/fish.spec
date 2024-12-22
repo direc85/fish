@@ -51,7 +51,8 @@ This package contains development files for the fish shell.
 %autosetup -p1 -n %{name}-%{version}/%{name}
 
 # fix E: env-script-interpreter
-find share/tools -type f -name *.py -exec \
+pwd
+find fish/share/tools -type f -name *.py -exec \
     sed -i -r '1s|^#!%{_bindir}/env |#!%{_bindir}/|' {} +
 
 %build
@@ -69,15 +70,6 @@ find share/tools -type f -name *.py -exec \
 %cmake_install
 
 %find_lang %{name}
-
-# Location varies between TW and SLE/Leap, try both
-rm %{buildroot}/%{_datadir}/doc/packages/fish/.buildinfo
-
-%suse_update_desktop_file -G "Command-line interpreter" fish TerminalEmulator
-
-%if %{suse_version} >= 1600
-%python3_fix_shebang_path %{buildroot}/%{_datadir}/%{name}/tools/*.py
-%endif
 
 %check
 pushd build
