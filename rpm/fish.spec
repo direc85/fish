@@ -74,6 +74,10 @@ This package contains development files for the fish shell.
 %autosetup -p1 -n %{name}-%{version}/%{name}
 
 %build
+
+# Since we're not using release tarball, inject version file manually
+echo "%{version}" > version
+
 %cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
