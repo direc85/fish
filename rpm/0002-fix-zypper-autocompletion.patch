@@ -1,0 +1,29 @@
+From 8f27454f998f1c501302cc681a254e9ebd83db41 Mon Sep 17 00:00:00 2001
+From: Matti Viljanen <matti.viljanen@kapsi.fi>
+Date: Sat, 19 Jul 2025 09:13:17 +0300
+Subject: [PATCH] ix zypper autocompletion
+
+---
+ share/completions/zypper.fish | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/share/completions/zypper.fish b/share/completions/zypper.fish
+index 7c4ce2f3a..6e47146c7 100644
+--- a/share/completions/zypper.fish
++++ b/share/completions/zypper.fish
+@@ -71,11 +71,11 @@ function __fish_zypper_print_packages
+     end
+ 
+     if __fish_zypper_is_subcommand_rm
+-        set idx /var/cache/zypp/solv/@System/solv.idx
++        set idx /home/.zypp-cache/solv/@System/solv.idx
+     else if test -z "$repo"
+-        set idx /var/cache/zypp/solv/*/solv.idx
++        set idx /home/.zypp-cache/solv/*/solv.idx
+     else
+-        set idx /var/cache/zypp/solv/$repo/solv.idx
++        set idx /home/.zypp-cache/solv/$repo/solv.idx
+     end
+ 
+     if test -z "$type"
+

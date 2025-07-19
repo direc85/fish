@@ -15,7 +15,7 @@
 
 Name:           fish
 Version:        3.7.1
-Release:        1
+Release:        2
 Summary:        The "friendly interactive shell"
 # see bundled doc_src/license.rst
 # Python is a legacy alias for PSF-2.0
@@ -24,6 +24,7 @@ Group:          System/Shells
 URL:            https://github.com/direc85/fish
 Source:         %{name}-%{version}.tar.xz
 Patch0:         0001-Ensure-correct-hashbang-for-.py-files.patch
+Patch1:         0002-fix-zypper-autocompletion.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
@@ -114,6 +115,9 @@ rm -f %{buildroot}/%{_datadir}/applications/fish.desktop
 %{_datadir}/pkgconfig/fish.pc
 
 %changelog
+
+* Sat Jul 19 2025 Matti Viljanen <matti.viljanen@kapsi.fi> - 3.7.1-2
+- Fix zypper autocompletion
 
 * Sun Dec 22 2024 Matti Viljanen <matti.viljanen@kapsi.fi> - 3.7.1-1
 - Initial Chum release
