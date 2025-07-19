@@ -23,6 +23,12 @@ License:        BSD-3-Clause AND GPLv2 AND ISC AND LGPLv2+ AND MIT AND Python
 Group:          System/Shells
 URL:            https://github.com/direc85/fish
 Source:         %{name}-%{version}.tar.xz
+
+%if 0%{?_chum}
+Source1:        vendor.tar.xz
+Source2:        vendor.toml
+%endif
+
 Patch0:         0001-Ensure-correct-hashbang-for-.py-files.patch
 Patch1:         0002-fix-zypper-autocompletion.patch
 BuildRequires:  cargo
@@ -108,6 +114,18 @@ export CXX_aarch64_unknown_linux_gnu=aarch64-meego-linux-gnu-g++
 export AR_aarch64_unknown_linux_gnu=aarch64-meego-linux-gnu-ar
 
 export CARGO_BUILD_JOBS=1
+
+%if 0%{?_chum}
+export CARGO_NET_OFFLINE=true
+if [ -d "vendor" ]; then
+  echo "Offline build already prepared."
+else
+  echo "Preparing offline build..."
+  tar xf %SOURCE1
+  mkdir -p .cargo/
+  cp %SOURCE2 .cargo/config.toml
+fi
+%endif
 
 # Since we're not using release tarball, inject version file manually
 echo "%{version}" > version
