@@ -4,3 +4,4 @@ RPMS/
 SRPMS/
 installroot/
 documentation.list
+rpm/vendor.tar.*
