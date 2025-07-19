@@ -1,21 +1,11 @@
-From df28f57fefe0539c96647c8b7ff24549535f8c35 Mon Sep 17 00:00:00 2001
+From 1e4a52ea14a1eddc11eb720ee1cabea483462244 Mon Sep 17 00:00:00 2001
 From: Matti Viljanen <matti.viljanen@kapsi.fi>
-Date: Sun, 22 Dec 2024 14:07:16 +0200
+Date: Sat, 19 Jul 2025 12:03:32 +0300
 Subject: [PATCH] Ensure correct hashbang for .py files
 
 ---
- build_tools/find_weak_odrs.py             | 2 +-
- build_tools/list_committers_since.fish    | 2 +-
- build_tools/littlecheck.py                | 2 +-
- build_tools/pexpect_helper.py             | 1 +
- doc_src/conf.py                           | 1 +
- doc_src/fish_indent_lexer.py              | 1 +
- doc_src/fish_synopsis.py                  | 1 +
- doc_src/python_docs_theme/__init__.py     | 1 +
  share/tools/create_manpage_completions.py | 2 +-
- share/tools/deroff.py                     | 1 +
- tests/interactive.fish                    | 2 +-
- tests/pexpects/abbrs.py                   | 2 +-
+ tests/pexpects/abbrs.py                   | 3 +--
  tests/pexpects/bind.py                    | 2 +-
  tests/pexpects/bind_mode_events.py        | 2 +-
  tests/pexpects/cancel_event.py            | 2 +-
@@ -39,10 +29,11 @@ Subject: [PATCH] Ensure correct hashbang for .py files
  tests/pexpects/pipeline.py                | 2 +-
  tests/pexpects/postexec.py                | 2 +-
  tests/pexpects/private_mode.py            | 2 +-
+ tests/pexpects/prompt_redraw_loop.py      | 2 +-
  tests/pexpects/read.py                    | 2 +-
  tests/pexpects/set_color.py               | 2 +-
  tests/pexpects/sigint.py                  | 2 +-
- tests/pexpects/signals.py                 | 4 ++--
+ tests/pexpects/signals.py                 | 2 +-
  tests/pexpects/status.py                  | 2 +-
  tests/pexpects/stdin_nonblocking.py       | 2 +-
  tests/pexpects/terminal.py                | 2 +-
@@ -51,85 +42,10 @@ Subject: [PATCH] Ensure correct hashbang for .py files
  tests/pexpects/undo.py                    | 2 +-
  tests/pexpects/wait.py                    | 2 +-
  tests/pexpects/wildcard_tab.py            | 2 +-
- 48 files changed, 49 insertions(+), 42 deletions(-)
+ 38 files changed, 38 insertions(+), 39 deletions(-)
 
-diff --git a/build_tools/find_weak_odrs.py b/build_tools/find_weak_odrs.py
-index c10a74d3b..faf7230fb 100755
---- a/build_tools/find_weak_odrs.py
-+++ b/build_tools/find_weak_odrs.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/python3
- 
- # Finds potential ODR violations due to weak symbols.
- # For example, if you have two different structs with the same name in different files,
-diff --git a/build_tools/list_committers_since.fish b/build_tools/list_committers_since.fish
-index e71722021..ffb1ad1c9 100755
---- a/build_tools/list_committers_since.fish
-+++ b/build_tools/list_committers_since.fish
-@@ -1,4 +1,4 @@
--#! /usr/bin/env fish
-+#!/usr/bin/env fish
- 
- set -l TAG $argv[1]
- 
-diff --git a/build_tools/littlecheck.py b/build_tools/littlecheck.py
-index d07c134f9..2c450309f 100755
---- a/build_tools/littlecheck.py
-+++ b/build_tools/littlecheck.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/python3
- 
- """ Command line test driver. """
- 
-diff --git a/build_tools/pexpect_helper.py b/build_tools/pexpect_helper.py
-index 68d14ba62..c59fd8486 100644
---- a/build_tools/pexpect_helper.py
-+++ b/build_tools/pexpect_helper.py
-@@ -1,3 +1,4 @@
-+#!/usr/bin/python3
- """pexpect_helper provides a wrapper around the pexpect module.
- 
- This module exposes a single class SpawnedProc, which wraps pexpect.spawn().
-diff --git a/doc_src/conf.py b/doc_src/conf.py
-index 55f9c7cfd..e18896e7c 100644
---- a/doc_src/conf.py
-+++ b/doc_src/conf.py
-@@ -1,3 +1,4 @@
-+#!/usr/bin/python3
- # -*- coding: utf-8 -*-
- #
- # Configuration file for the Sphinx documentation builder.
-diff --git a/doc_src/fish_indent_lexer.py b/doc_src/fish_indent_lexer.py
-index f4b154e8c..9d9e24b51 100644
---- a/doc_src/fish_indent_lexer.py
-+++ b/doc_src/fish_indent_lexer.py
-@@ -1,3 +1,4 @@
-+#!/usr/bin/python3
- # This is a plugin for pygments that shells out to fish_indent.
- 
- # Example of how to use this:
-diff --git a/doc_src/fish_synopsis.py b/doc_src/fish_synopsis.py
-index 51df271e1..1e29839d2 100644
---- a/doc_src/fish_synopsis.py
-+++ b/doc_src/fish_synopsis.py
-@@ -1,3 +1,4 @@
-+#!/usr/bin/python3
- # Pygments lexer for a fish command synopsis.
- #
- # Example usage:
-diff --git a/doc_src/python_docs_theme/__init__.py b/doc_src/python_docs_theme/__init__.py
-index fd5cb14c9..8dde793b2 100644
---- a/doc_src/python_docs_theme/__init__.py
-+++ b/doc_src/python_docs_theme/__init__.py
-@@ -1,3 +1,4 @@
-+#!/usr/bin/python3
- import os
- 
- 
 diff --git a/share/tools/create_manpage_completions.py b/share/tools/create_manpage_completions.py
-index e55df6e32..3b6c5148b 100755
+index 1fc26a846..aa7e7223c 100755
 --- a/share/tools/create_manpage_completions.py
 +++ b/share/tools/create_manpage_completions.py
 @@ -1,4 +1,4 @@
@@ -138,27 +54,8 @@ index e55df6e32..3b6c5148b 100755
  # -*- coding: utf-8 -*-
  
  # Run me like this: ./create_manpage_completions.py /usr/share/man/man{1,8}/* > man_completions.fish
-diff --git a/share/tools/deroff.py b/share/tools/deroff.py
-index 789c4524e..0081c40e4 100755
---- a/share/tools/deroff.py
-+++ b/share/tools/deroff.py
-@@ -1,3 +1,4 @@
-+#!/usr/bin/python3
- # -*- coding: utf-8 -*-
- 
- """ Deroff.py, ported to Python from the venerable deroff.c """
-diff --git a/tests/interactive.fish b/tests/interactive.fish
-index 9f2e0d63f..f5da6e613 100644
---- a/tests/interactive.fish
-+++ b/tests/interactive.fish
-@@ -1,4 +1,4 @@
--#! /bin/echo "interactive.fish must be run via the test driver!"
-+#!/bin/echo "interactive.fish must be run via the test driver!"
- #
- # Interactive tests using `pexpect`
- 
 diff --git a/tests/pexpects/abbrs.py b/tests/pexpects/abbrs.py
-index d5f7bf4e8..7735af326 100644
+index c3f9131ee..7d4fb7fd7 100644
 --- a/tests/pexpects/abbrs.py
 +++ b/tests/pexpects/abbrs.py
 @@ -1,4 +1,4 @@
@@ -166,9 +63,14 @@ index d5f7bf4e8..7735af326 100644
 +#!/usr/bin/python3
  from pexpect_helper import SpawnedProc
  
- import re
+ sp = SpawnedProc()
+@@ -180,4 +180,3 @@ sendline(r"""abbr fruit --command={git,hg,svn,} banana""")
+ expect_prompt()
+ sendline(r"""fruit foo""")
+ expect_prompt("I am a banana")
+-
 diff --git a/tests/pexpects/bind.py b/tests/pexpects/bind.py
-index 0bab617e2..5388abfde 100644
+index 2c43ca04a..d6471ae3a 100644
 --- a/tests/pexpects/bind.py
 +++ b/tests/pexpects/bind.py
 @@ -1,4 +1,4 @@
@@ -178,7 +80,7 @@ index 0bab617e2..5388abfde 100644
  import os
  import platform
 diff --git a/tests/pexpects/bind_mode_events.py b/tests/pexpects/bind_mode_events.py
-index 26271b31f..4efe8f8ea 100644
+index 4ee9c37c2..b812a6fc1 100644
 --- a/tests/pexpects/bind_mode_events.py
 +++ b/tests/pexpects/bind_mode_events.py
 @@ -1,4 +1,4 @@
@@ -186,9 +88,9 @@ index 26271b31f..4efe8f8ea 100644
 +#!/usr/bin/python3
  from pexpect_helper import SpawnedProc
  import os
- import signal
+ import sys
 diff --git a/tests/pexpects/cancel_event.py b/tests/pexpects/cancel_event.py
-index 474399d5c..e6b78826b 100644
+index af6e33410..9736041be 100644
 --- a/tests/pexpects/cancel_event.py
 +++ b/tests/pexpects/cancel_event.py
 @@ -1,4 +1,4 @@
@@ -198,7 +100,7 @@ index 474399d5c..e6b78826b 100644
  from pexpect_helper import SpawnedProc
  import signal
 diff --git a/tests/pexpects/commandline.py b/tests/pexpects/commandline.py
-index 9cfac3799..653672da3 100644
+index 571cec309..a22ad2f88 100644
 --- a/tests/pexpects/commandline.py
 +++ b/tests/pexpects/commandline.py
 @@ -1,4 +1,4 @@
@@ -208,7 +110,7 @@ index 9cfac3799..653672da3 100644
  
  sp = SpawnedProc()
 diff --git a/tests/pexpects/complete-group-order.py b/tests/pexpects/complete-group-order.py
-index cc4364bfe..55765a573 100644
+index 82ea76b89..b6974e956 100644
 --- a/tests/pexpects/complete-group-order.py
 +++ b/tests/pexpects/complete-group-order.py
 @@ -1,4 +1,4 @@
@@ -218,7 +120,7 @@ index cc4364bfe..55765a573 100644
  
  sp = SpawnedProc()
 diff --git a/tests/pexpects/complete.py b/tests/pexpects/complete.py
-index c862f9469..50912ae83 100644
+index 843d4d192..1317ae3a2 100644
 --- a/tests/pexpects/complete.py
 +++ b/tests/pexpects/complete.py
 @@ -1,4 +1,4 @@
@@ -228,7 +130,7 @@ index c862f9469..50912ae83 100644
  
  sp = SpawnedProc()
 diff --git a/tests/pexpects/cursor_selection.py b/tests/pexpects/cursor_selection.py
-index 2476916c9..e0d957221 100644
+index 54aa1ecd4..89dc28b1e 100644
 --- a/tests/pexpects/cursor_selection.py
 +++ b/tests/pexpects/cursor_selection.py
 @@ -1,4 +1,4 @@
@@ -238,17 +140,17 @@ index 2476916c9..e0d957221 100644
  
  sp = SpawnedProc()
 diff --git a/tests/pexpects/disable_mouse.py b/tests/pexpects/disable_mouse.py
-index 14e40f37a..ec35b6234 100644
+index 5fe11d987..00fab231e 100644
 --- a/tests/pexpects/disable_mouse.py
 +++ b/tests/pexpects/disable_mouse.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  from pexpect_helper import SpawnedProc
- import subprocess
- import sys
+ 
+ sp = SpawnedProc(args=["-d", "reader"])
 diff --git a/tests/pexpects/eval-stack-overflow.py b/tests/pexpects/eval-stack-overflow.py
-index 746da52af..3695831e4 100644
+index 8e47ce789..503fcab38 100644
 --- a/tests/pexpects/eval-stack-overflow.py
 +++ b/tests/pexpects/eval-stack-overflow.py
 @@ -1,4 +1,4 @@
@@ -258,17 +160,17 @@ index 746da52af..3695831e4 100644
  import re
  import os
 diff --git a/tests/pexpects/exit.py b/tests/pexpects/exit.py
-index c9704b661..36158562e 100644
+index 9caae5f78..2f171af8d 100644
 --- a/tests/pexpects/exit.py
 +++ b/tests/pexpects/exit.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  from pexpect_helper import SpawnedProc
+ import os
  import subprocess
- import sys
 diff --git a/tests/pexpects/exit_handlers.py b/tests/pexpects/exit_handlers.py
-index ffe7a9eed..d52cf9c1b 100644
+index 8959cc2ab..d11e0ac45 100644
 --- a/tests/pexpects/exit_handlers.py
 +++ b/tests/pexpects/exit_handlers.py
 @@ -1,4 +1,4 @@
@@ -278,17 +180,17 @@ index ffe7a9eed..d52cf9c1b 100644
  import os
  import signal
 diff --git a/tests/pexpects/exit_nohang.py b/tests/pexpects/exit_nohang.py
-index 2292d5f0b..d5d816dc4 100644
+index 1b5d51a61..cf495a61e 100644
 --- a/tests/pexpects/exit_nohang.py
 +++ b/tests/pexpects/exit_nohang.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  from pexpect_helper import SpawnedProc
- import subprocess
  import sys
+ import signal
 diff --git a/tests/pexpects/fg.py b/tests/pexpects/fg.py
-index 0405a1782..0aaa55cf6 100644
+index 628306006..bffed3e0a 100644
 --- a/tests/pexpects/fg.py
 +++ b/tests/pexpects/fg.py
 @@ -1,4 +1,4 @@
@@ -298,27 +200,27 @@ index 0405a1782..0aaa55cf6 100644
  import platform
  import subprocess
 diff --git a/tests/pexpects/fkr.py b/tests/pexpects/fkr.py
-index 95ebfa3e8..d73dea0ec 100644
+index 4864d9200..16564da44 100644
 --- a/tests/pexpects/fkr.py
 +++ b/tests/pexpects/fkr.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  from pexpect_helper import SpawnedProc
- import subprocess
- import sys
+ from time import sleep
+ import os
 diff --git a/tests/pexpects/generic.py b/tests/pexpects/generic.py
-index 5dd0ed618..77d923e1a 100644
+index 7c7f35fe9..26e935b96 100644
 --- a/tests/pexpects/generic.py
 +++ b/tests/pexpects/generic.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  from pexpect_helper import SpawnedProc
- import subprocess
- import sys
+ 
+ sp = SpawnedProc()
 diff --git a/tests/pexpects/histfile.py b/tests/pexpects/histfile.py
-index f6603ebf2..31d9ed629 100644
+index f0d47e24a..282342f75 100644
 --- a/tests/pexpects/histfile.py
 +++ b/tests/pexpects/histfile.py
 @@ -1,4 +1,4 @@
@@ -328,7 +230,7 @@ index f6603ebf2..31d9ed629 100644
  import os
  
 diff --git a/tests/pexpects/history.py b/tests/pexpects/history.py
-index 5d01a7445..93c0b722b 100644
+index 0e931b1f0..bfeed97bc 100644
 --- a/tests/pexpects/history.py
 +++ b/tests/pexpects/history.py
 @@ -1,4 +1,4 @@
@@ -338,17 +240,17 @@ index 5d01a7445..93c0b722b 100644
  # commands and verifying they are recorded correctly in the interactive
  # history and that history can be manipulated is inherently difficult.
 diff --git a/tests/pexpects/isatty.py b/tests/pexpects/isatty.py
-index 84931f277..83bcdc49b 100644
+index 80704d62f..dc1e734e3 100644
 --- a/tests/pexpects/isatty.py
 +++ b/tests/pexpects/isatty.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  from pexpect_helper import SpawnedProc
- import subprocess
- import sys
+ 
+ sp = SpawnedProc()
 diff --git a/tests/pexpects/job_summary.py b/tests/pexpects/job_summary.py
-index d9e8984d5..066fd0ffd 100644
+index fa3d0d84e..22f503bfe 100644
 --- a/tests/pexpects/job_summary.py
 +++ b/tests/pexpects/job_summary.py
 @@ -1,4 +1,4 @@
@@ -388,7 +290,7 @@ index 53cc929ac..1512d6ee5 100644
  
  sp = SpawnedProc()
 diff --git a/tests/pexpects/private_mode.py b/tests/pexpects/private_mode.py
-index 239264e65..e7705d3cb 100644
+index e8d8402ef..564cee2f4 100644
 --- a/tests/pexpects/private_mode.py
 +++ b/tests/pexpects/private_mode.py
 @@ -1,4 +1,4 @@
@@ -397,8 +299,18 @@ index 239264e65..e7705d3cb 100644
  import os
  import time
  from pexpect_helper import SpawnedProc
+diff --git a/tests/pexpects/prompt_redraw_loop.py b/tests/pexpects/prompt_redraw_loop.py
+index 45aad38ea..b1497491a 100644
+--- a/tests/pexpects/prompt_redraw_loop.py
++++ b/tests/pexpects/prompt_redraw_loop.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ from pexpect_helper import SpawnedProc
+ import re
+ 
 diff --git a/tests/pexpects/read.py b/tests/pexpects/read.py
-index abfa7f96a..88ee4b084 100644
+index 4eabb531e..db99d998b 100644
 --- a/tests/pexpects/read.py
 +++ b/tests/pexpects/read.py
 @@ -1,4 +1,4 @@
@@ -408,17 +320,17 @@ index abfa7f96a..88ee4b084 100644
  
  sp = SpawnedProc()
 diff --git a/tests/pexpects/set_color.py b/tests/pexpects/set_color.py
-index d382cce4a..b7f860a29 100644
+index 2534ef3c9..c621c97bd 100644
 --- a/tests/pexpects/set_color.py
 +++ b/tests/pexpects/set_color.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  from pexpect_helper import SpawnedProc
- import subprocess
- import sys
+ import os
+ 
 diff --git a/tests/pexpects/sigint.py b/tests/pexpects/sigint.py
-index 35e1a7453..0bdebdb01 100644
+index f8468b3ae..b51e588e9 100644
 --- a/tests/pexpects/sigint.py
 +++ b/tests/pexpects/sigint.py
 @@ -1,4 +1,4 @@
@@ -428,7 +340,7 @@ index 35e1a7453..0bdebdb01 100644
  
  sp = SpawnedProc()
 diff --git a/tests/pexpects/signals.py b/tests/pexpects/signals.py
-index 428341312..1da31a188 100644
+index ff53ee663..65c7f19df 100644
 --- a/tests/pexpects/signals.py
 +++ b/tests/pexpects/signals.py
 @@ -1,4 +1,4 @@
@@ -437,27 +349,18 @@ index 428341312..1da31a188 100644
  from pexpect_helper import SpawnedProc
  
  sp = SpawnedProc(timeout=10)
-@@ -98,7 +98,7 @@ if proc.returncode == 0:
-         pid = line.split(b' ', maxsplit=1)[0].decode("utf-8")
-         if pid in pids:
-             remaining += [pid]
--        
-+
- # Kill any remaining sleeps ourselves, otherwise rerunning this is pointless.
- for pid in remaining:
-     try:
 diff --git a/tests/pexpects/status.py b/tests/pexpects/status.py
-index d094daccb..f18b2071a 100644
+index 01633395a..cd4b7330a 100644
 --- a/tests/pexpects/status.py
 +++ b/tests/pexpects/status.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  from pexpect_helper import SpawnedProc
- import os
- import platform
+ 
+ sp = SpawnedProc()
 diff --git a/tests/pexpects/stdin_nonblocking.py b/tests/pexpects/stdin_nonblocking.py
-index d1f6a0eeb..cd3e693a1 100644
+index 935315030..486be3197 100644
 --- a/tests/pexpects/stdin_nonblocking.py
 +++ b/tests/pexpects/stdin_nonblocking.py
 @@ -1,4 +1,4 @@
@@ -465,9 +368,9 @@ index d1f6a0eeb..cd3e693a1 100644
 +#!/usr/bin/python3
  # Verify that stdin is properly set to blocking even if a job tweaks it.
  from pexpect_helper import SpawnedProc
- import sys
+ import os
 diff --git a/tests/pexpects/terminal.py b/tests/pexpects/terminal.py
-index a8b0309ca..503098816 100644
+index 5e05abb61..3c95da4b6 100644
 --- a/tests/pexpects/terminal.py
 +++ b/tests/pexpects/terminal.py
 @@ -1,4 +1,4 @@
@@ -477,15 +380,15 @@ index a8b0309ca..503098816 100644
  import platform
  
 diff --git a/tests/pexpects/torn_escapes.py b/tests/pexpects/torn_escapes.py
-index 1927268f6..0f824f8bb 100644
+index a528ef81e..a24f164b9 100644
 --- a/tests/pexpects/torn_escapes.py
 +++ b/tests/pexpects/torn_escapes.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  import os
+ import platform
  import signal
- from pexpect_helper import SpawnedProc
 diff --git a/tests/pexpects/tty_ownership.py b/tests/pexpects/tty_ownership.py
 index 39c6c38be..66454f488 100644
 --- a/tests/pexpects/tty_ownership.py
@@ -497,7 +400,7 @@ index 39c6c38be..66454f488 100644
  
  sp = SpawnedProc()
 diff --git a/tests/pexpects/undo.py b/tests/pexpects/undo.py
-index faa335df2..2f098ef74 100644
+index 369001f0a..abc9b20fc 100644
 --- a/tests/pexpects/undo.py
 +++ b/tests/pexpects/undo.py
 @@ -1,4 +1,4 @@
@@ -507,7 +410,7 @@ index faa335df2..2f098ef74 100644
  
  sp = SpawnedProc()
 diff --git a/tests/pexpects/wait.py b/tests/pexpects/wait.py
-index 3e69cbeb2..7f2ba57a8 100644
+index 3dc21fc62..0f9c9a51d 100644
 --- a/tests/pexpects/wait.py
 +++ b/tests/pexpects/wait.py
 @@ -1,4 +1,4 @@
@@ -515,17 +418,17 @@ index 3e69cbeb2..7f2ba57a8 100644
 +#!/usr/bin/python3
  from pexpect_helper import SpawnedProc
  
- sp = SpawnedProc()
+ import os
 diff --git a/tests/pexpects/wildcard_tab.py b/tests/pexpects/wildcard_tab.py
-index f52f50c2c..0c1bd0b88 100644
+index c9bcd7bbd..387e18556 100644
 --- a/tests/pexpects/wildcard_tab.py
 +++ b/tests/pexpects/wildcard_tab.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
- import signal
  from pexpect_helper import SpawnedProc
  
+ sp = SpawnedProc()
 -- 
-2.47.0
+2.46.0
 
