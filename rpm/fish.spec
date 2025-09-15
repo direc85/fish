@@ -14,7 +14,7 @@
 
 
 Name:           fish
-Version:        4.0.2
+Version:        4.0.6
 Release:        1
 Summary:        The "friendly interactive shell"
 # see bundled doc_src/license.rst
@@ -166,6 +166,12 @@ rm -f %{buildroot}/%{_datadir}/applications/fish.desktop
 %{_datadir}/pkgconfig/fish.pc
 
 %changelog
+
+* Mon Sep 15 2025 Matti Viljanen <matti.viljanen@kapsi.fi> - 4.0.6-1
+- Update Fish to 4.0.6
+
+* Sat Jul 19 2025 Matti Viljanen <matti.viljanen@kapsi.fi> - 4.0.2-1
+- Update Fish to 4.0.2
 
 * Sat Jul 19 2025 Matti Viljanen <matti.viljanen@kapsi.fi> - 3.7.1-2
 - Fix zypper autocompletion
