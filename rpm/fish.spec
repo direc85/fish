@@ -14,7 +14,7 @@
 
 
 Name:           fish
-Version:        4.0.6
+Version:        4.1.2
 Release:        1
 Summary:        The "friendly interactive shell"
 # see bundled doc_src/license.rst
@@ -32,8 +32,8 @@ Source2:        vendor.toml
 Patch0:         0001-Ensure-correct-hashbang-for-.py-files.patch
 Patch1:         0002-fix-zypper-autocompletion.patch
 BuildRequires:  cargo
+BuildRequires:  rust >= 1.70
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
 BuildRequires:  gettext
 BuildRequires:  ncurses-devel
 BuildRequires:  pcre2-devel >= 10.21
@@ -71,13 +71,6 @@ Links:
   Bugtracker: https://github.com/direc85/fish/issues
   Donation: https://ko-fi.com/direc85
 %endif
-
-%package devel
-Summary:        Devel files for the fish shell
-Group:          Development/Libraries/C and C++
-
-%description devel
-This package contains development files for the fish shell.
 
 %prep
 %autosetup -p1 -n %{name}-%{version}/%{name}
@@ -148,24 +141,22 @@ echo "%{version}" > version
 %install
 %cmake_install
 
-%find_lang %{name}
-
 rm -f %{buildroot}/%{_datadir}/doc/packages/fish/CHANGELOG.rst
 rm -f %{buildroot}/%{_datadir}/applications/fish.desktop
 
-%files -f %{name}.lang
+%files
 %dir %{_sysconfdir}/fish
 %config(noreplace) %{_sysconfdir}/%{name}/*
 %{_bindir}/fish
 %{_bindir}/fish_indent
 %{_bindir}/fish_key_reader
 %{_datadir}/%{name}
-%{_datadir}/pixmaps/fish.png
-
-%files devel
 %{_datadir}/pkgconfig/fish.pc
 
 %changelog
+
+* Wed Oct 08 2025 Matti Viljanen <matti.viljanen@kapsi.fi> - 4.1.2-1
+- Update Fish to 4.1.2
 
 * Mon Sep 15 2025 Matti Viljanen <matti.viljanen@kapsi.fi> - 4.0.6-1
 - Update Fish to 4.0.6
