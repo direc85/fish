@@ -1,6 +1,6 @@
 # Fish
 
-Fish is a user-fiendly, interactive shell. This project provides the packaging of the application (without documentation) to Sailfish OS. You can download the binaries from Chum from 3.7.1 and onward. The older builds can be found in [OpenRepos.net](https://openrepos.net/content/direc85/fish).
+Fish is a user-fiendly, interactive shell. This project provides the packaging of the application (without documentation) to Sailfish OS. You can download the binaries from Chum from 3.7.1 and onward. The older builds can be found in [OpenRepos.net](https://openrepos.net/content/direc85/fish). Fish 4.8.1 requires Rust 1.85, which is not yet available for Sailfish OS, so the releases are back in OpenRepos fow now.
 
 > :warning: **Do NOT set fish as default shell!** :warning:
 

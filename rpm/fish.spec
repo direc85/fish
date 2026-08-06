@@ -14,7 +14,7 @@
 
 
 Name:           fish
-Version:        4.1.2
+Version:        4.8.1
 Release:        1
 Summary:        The "friendly interactive shell"
 # see bundled doc_src/license.rst
@@ -30,8 +30,9 @@ Source2:        vendor.toml
 %endif
 
 Patch1:         0001-fix-zypper-autocompletion.patch
-BuildRequires:  cargo
-BuildRequires:  rust >= 1.70
+Patch2:         0002-Use-Cargo.toml-version.patch
+BuildRequires:  cargo >= 1.85
+BuildRequires:  rust >= 1.85
 BuildRequires:  cmake
 BuildRequires:  gettext
 BuildRequires:  ncurses-devel
@@ -131,7 +132,7 @@ echo "%{version}" > version
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DCMAKE_INSTALL_SYSCONFDIR=%{_sysconfdir} \
     -DCMAKE_INSTALL_DOCDIR:PATH=share/doc/packages/fish \
-    -DBUILD_DOCS=OFF \
+    -DWITH_DOCS=OFF \
     -DFISH_USE_SYSTEM_PCRE2=ON \
     -DWITH_MESSAGE_LOCALIZATION=OFF \
     -DRust_CARGO_TARGET=$SB2_RUST_TARGET_TRIPLE \
@@ -155,6 +156,11 @@ rm -f %{buildroot}/%{_datadir}/applications/fish.desktop
 %{_datadir}/pkgconfig/fish.pc
 
 %changelog
+
+* Thu Aug 06 2026 Matti Viljanen <matti.viljanen@kapsi.fi> - 4.8.1-1
+- Update Fish to 4.8.1
+- Disable message localisations
+- Fix Python hashbang lines in prep
 
 * Wed Oct 08 2025 Matti Viljanen <matti.viljanen@kapsi.fi> - 4.1.2-1
 - Update Fish to 4.1.2

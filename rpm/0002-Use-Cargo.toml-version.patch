@@ -1,0 +1,27 @@
+From df58b99cd31550a392a7e384a63d9af0ced69c29 Mon Sep 17 00:00:00 2001
+From: Matti Viljanen <matti.viljanen@kapsi.fi>
+Date: Thu, 6 Aug 2026 10:37:27 +0300
+Subject: [PATCH] Use Cargo.toml version
+
+---
+ build_tools/git_version_gen.sh | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/build_tools/git_version_gen.sh b/build_tools/git_version_gen.sh
+index 2febce0f3..bfefc5ec8 100755
+--- a/build_tools/git_version_gen.sh
++++ b/build_tools/git_version_gen.sh
+@@ -9,6 +9,10 @@ FISH_BASE_DIR="$( cd "$( dirname "$( dirname "$0" )" )" && pwd )"
+ version=$(
+     awk <"$FISH_BASE_DIR/Cargo.toml" -F'"' '$1 == "version = " { print $2 }'
+ )
++
++echo "$version"
++exit 0
++
+ if git_version=$(
+     GIT_CEILING_DIRECTORIES=$FISH_BASE_DIR/.. \
+         git -C "$FISH_BASE_DIR" describe --always --dirty 2>/dev/null); then
+-- 
+2.50.1
+
