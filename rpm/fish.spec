@@ -29,8 +29,7 @@ Source1:        vendor.tar.xz
 Source2:        vendor.toml
 %endif
 
-Patch0:         0001-Ensure-correct-hashbang-for-.py-files.patch
-Patch1:         0002-fix-zypper-autocompletion.patch
+Patch1:         0001-fix-zypper-autocompletion.patch
 BuildRequires:  cargo
 BuildRequires:  rust >= 1.70
 BuildRequires:  cmake
@@ -74,6 +73,7 @@ Links:
 
 %prep
 %autosetup -p1 -n %{name}-%{version}/%{name}
+find -name '*.py' -exec sed -i -E 's@#!/usr/bin/env python3?@#!/usr/bin/python3@' {} \;
 
 %if 0%{?_chum}
 if [ -d "vendor" ]; then
