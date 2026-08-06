@@ -133,6 +133,7 @@ echo "%{version}" > version
     -DCMAKE_INSTALL_DOCDIR:PATH=share/doc/packages/fish \
     -DBUILD_DOCS=OFF \
     -DFISH_USE_SYSTEM_PCRE2=ON \
+    -DWITH_MESSAGE_LOCALIZATION=OFF \
     -DRust_CARGO_TARGET=$SB2_RUST_TARGET_TRIPLE \
     -DRust_CARGO_HOST_TARGET=$SB2_RUST_TARGET_TRIPLE \
     %{nil}
