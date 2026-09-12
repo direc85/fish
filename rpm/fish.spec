@@ -14,7 +14,7 @@
 
 
 Name:           fish
-Version:        4.8.1
+Version:        4.9.3
 Release:        1
 Summary:        The "friendly interactive shell"
 # see bundled doc_src/license.rst
@@ -117,8 +117,6 @@ export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=aarch64-meego-linux-gnu-gcc
 export CC_aarch64_unknown_linux_gnu=aarch64-meego-linux-gnu-gcc
 export CXX_aarch64_unknown_linux_gnu=aarch64-meego-linux-gnu-g++
 export AR_aarch64_unknown_linux_gnu=aarch64-meego-linux-gnu-ar
-
-export CARGO_BUILD_JOBS=1
 
 %if 0%{?_chum}
 export CARGO_NET_OFFLINE=true
